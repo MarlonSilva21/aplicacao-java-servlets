@@ -1,21 +1,20 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/listaEmpresas")
-public class ListaEmpresasServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import br.com.alura.gerenciador.model.Banco;
+import br.com.alura.gerenciador.model.Empresa;
 
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class ListaEmpresas {
 	
+	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Banco banco = new Banco();
 		
 		List<Empresa> lista =  banco.getEmpresas();
@@ -26,4 +25,5 @@ public class ListaEmpresasServlet extends HttpServlet {
 		rd.forward(request, response);
 		
 	}
+
 }
