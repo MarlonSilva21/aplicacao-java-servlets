@@ -2,6 +2,7 @@ package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.acao.AlteraEmpresa;
 import br.com.alura.gerenciador.acao.CadastrarEmpresa;
+import br.com.alura.gerenciador.acao.FormCadastrarEmpresa;
 import br.com.alura.gerenciador.acao.ListaEmpresas;
 import br.com.alura.gerenciador.acao.MostraEmpresa;
 import br.com.alura.gerenciador.acao.RemoveEmpresa;
@@ -22,31 +24,48 @@ public class ControllerServlet extends HttpServlet {
 
 		
 		String paramAcao = request.getParameter("acao");
+		String nome = null;
 		
 		if(paramAcao.equals("CadastrarEmpresa")) {
 			CadastrarEmpresa acao = new CadastrarEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 		}
 		
 		else if(paramAcao.equals("ListaEmpresas")) {	
 			ListaEmpresas acao = new ListaEmpresas();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 		}
 		
 		else if(paramAcao.equals("RemoveEmpresa")) {
 			RemoveEmpresa acao = new RemoveEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 		}
 		
 		else if(paramAcao.equals("MostraEmpresa")) {
 			MostraEmpresa acao = new MostraEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 		}
 		
 		else if(paramAcao.equals("AlteraEmpresa")) {
 			AlteraEmpresa acao = new AlteraEmpresa();
-			acao.executa(request, response);
+			nome = acao.executa(request, response);
 		}
+		
+		else if(paramAcao.equals("FormCadastrarEmpresa")) {
+			FormCadastrarEmpresa acao = new FormCadastrarEmpresa();
+			nome = acao.executa(request, response);
+		}
+		
+		String[] prefixoEndereco = nome.split(":");
+		
+		if(prefixoEndereco[0].equals("forward")) {
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + prefixoEndereco[1]);
+			rd.forward(request, response);
+		}
+		else {
+			response.sendRedirect(prefixoEndereco[1]);
+		}
+	
 		
 	}
 }

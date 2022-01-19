@@ -12,29 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.model.Banco;
 import br.com.alura.gerenciador.model.Empresa;
 
-public class CadastrarEmpresa {
+public class FormCadastrarEmpresa {
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("cadastrando empresa");
 		
-		String nomeEmpresa = request.getParameter("nome");
-		String dataAbertura = request.getParameter("data");
-		Date data = null;
-		
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			data = sdf.parse(dataAbertura);
-		} catch (ParseException e) {
-			throw new ServletException(e);
-		}
-		Empresa empresa = new Empresa(nomeEmpresa, data);
-		
-		Banco banco = new Banco();
-		banco.add(empresa);
-		
-		request.setAttribute("Empresa", empresa.getNome());
-		
-		return "redirect:controller?acao=ListaEmpresas";
-		
+		return "forward:formNovaEmpresa.jsp";
+
 	}
 }
