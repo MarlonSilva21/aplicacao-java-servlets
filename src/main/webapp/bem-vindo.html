@@ -8,18 +8,19 @@
 		aplicação web</h1>
 	<h4 align="center">O que você deseja fazer?</h4>
 
-	<form align="center" action="/gerenciador/controller">
 
-		<input type="hidden" name="acao" value="FormCadastrarEmpresa">
-		<button type="submit">Cadastrar nova empresa</button>
-	</form>
+	<div style="display: flex; justify-content: center;">
 
-	<form align="center" action="/gerenciador/controller">
-
-		<input type="hidden" name="acao" value="ListaEmpresas">
-		<button type="submit">Ver empresas cadastradas</button>
-
-	</form>
-
+		<form style="margin-right:10px;" action="/gerenciador/controller">
+			<input type="hidden" name="acao" value="FormLogin" />
+			<button type="submit">Entre</button>
+		</form>
+		
+			<form action="/gerenciador/controller">
+			<input type="hidden" name="acao" value="FormRegistro" />
+			<button type="submit">Registre-se</button>
+		</form>
+		
+	</div>
 </body>
 </html>

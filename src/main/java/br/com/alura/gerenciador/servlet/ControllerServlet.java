@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.acao.Acao;
 import br.com.alura.gerenciador.acao.AlteraEmpresa;
@@ -25,6 +26,17 @@ public class ControllerServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		String paramAcao = request.getParameter("acao");
+		
+		HttpSession sessao = request.getSession();
+		boolean usuarioNaoLogado = (sessao.getAttribute("usuarioLogado") == null);
+		boolean acaoProtegida = !(paramAcao.equals("FormRegistro") || paramAcao.equals("RegistroUsuario") || paramAcao.equals("Login") || paramAcao.equals("FormLogin"));
+		
+		if(acaoProtegida && usuarioNaoLogado){
+			response.sendRedirect("controller?acao=FormLogin");
+			return;
+		}
+		
+		
 		String nomeClasse = "br.com.alura.gerenciador.acao." + paramAcao;
 
 		String nome;
