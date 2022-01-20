@@ -45,35 +45,7 @@ public class ControllerServlet extends HttpServlet {
 			response.sendRedirect(prefixoEndereco[1]);
 		}
 
-//		if(paramAcao.equals("CadastrarEmpresa")) {
-//			CadastrarEmpresa acao = new CadastrarEmpresa();
-//			nome = acao.executa(request, response);
-//		}
-//		
-//		else if(paramAcao.equals("ListaEmpresas")) {	
-//			ListaEmpresas acao = new ListaEmpresas();
-//			nome = acao.executa(request, response);
-//		}
-//		
-//		else if(paramAcao.equals("RemoveEmpresa")) {
-//			RemoveEmpresa acao = new RemoveEmpresa();
-//			nome = acao.executa(request, response);
-//		}
-//		
-//		else if(paramAcao.equals("MostraEmpresa")) {
-//			MostraEmpresa acao = new MostraEmpresa();
-//			nome = acao.executa(request, response);
-//		}
-//		
-//		else if(paramAcao.equals("AlteraEmpresa")) {
-//			AlteraEmpresa acao = new AlteraEmpresa();
-//			nome = acao.executa(request, response);
-//		}
-//		
-//		else if(paramAcao.equals("FormCadastrarEmpresa")) {
-//			FormCadastrarEmpresa acao = new FormCadastrarEmpresa();
-//			nome = acao.executa(request, response);
-//		}
+
 
 	}
 }
