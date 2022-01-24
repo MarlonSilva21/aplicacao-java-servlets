@@ -21,7 +21,7 @@
 		
 		<input type="hidden" name="acao" value="RegistroUsuario" />
 		
-		<button type="submit">Entrar</button>
+		<button type="submit">Cadastre-se</button>
 	
 	</form>
 
